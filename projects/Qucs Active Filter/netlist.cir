@@ -1,0 +1,62 @@
+* Qucs 25.2.0  C:/Users/86152/Desktop/projects/Qucs Active Filter/project2.sch
+.INCLUDE "D:/qucs_s/Qucs-S/share/qucs-s/xspice_cmlib/include/ngspice_mathfunc.inc"
+V1 in 0 DC 0 SIN(0 1 1K 0 0 0) AC 1 ACPHASE 0
+B_OP1 _net1 0 V = 1E6*V(0,_net0)*u(15-1E6*V(0,_net0))*u(1E6*V(0,_net0)-(-15))+15*u(1E6*V(0,_net0)-15)+(-15)*u((-15)-1E6*V(0,_net0))
+C1 0 _net2  10.000N 
+C2 _net0 _net1  62.680P 
+R1 _net2 _net1  284.295K tc1=0.0 tc2=0.0 
+R2 in _net2  284.295K tc1=0.0 tc2=0.0 
+R3 _net2 _net0  142.148K tc1=0.0 tc2=0.0 
+B_OP2 _net4 0 V = 1E6*V(0,_net3)*u(15-1E6*V(0,_net3))*u(1E6*V(0,_net3)-(-15))+15*u(1E6*V(0,_net3)-15)+(-15)*u((-15)-1E6*V(0,_net3))
+C3 0 _net5  10.000N 
+C4 _net3 _net4  545.421P 
+R4 _net5 _net4  96.376K tc1=0.0 tc2=0.0 
+R5 _net1 _net5  96.376K tc1=0.0 tc2=0.0 
+R6 _net5 _net3  48.188K tc1=0.0 tc2=0.0 
+B_OP3 _net7 0 V = 1E6*V(0,_net6)*u(15-1E6*V(0,_net6))*u(1E6*V(0,_net6)-(-15))+15*u(1E6*V(0,_net6)-15)+(-15)*u((-15)-1E6*V(0,_net6))
+C5 0 _net8  10.000N 
+C6 _net6 _net7  1415.291P 
+R7 _net8 _net7  59.829K tc1=0.0 tc2=0.0 
+R8 _net4 _net8  59.829K tc1=0.0 tc2=0.0 
+R9 _net8 _net6  29.915K tc1=0.0 tc2=0.0 
+B_OP4 _net10 0 V = 1E6*V(0,_net9)*u(15-1E6*V(0,_net9))*u(1E6*V(0,_net9)-(-15))+15*u(1E6*V(0,_net9)-15)+(-15)*u((-15)-1E6*V(0,_net9))
+C7 0 _net11  10.000N 
+C8 _net9 _net10  2500.000P 
+R10 _net11 _net10  45.016K tc1=0.0 tc2=0.0 
+R11 _net7 _net11  45.016K tc1=0.0 tc2=0.0 
+R12 _net11 _net9  22.508K tc1=0.0 tc2=0.0 
+B_OP5 _net13 0 V = 1E6*V(0,_net12)*u(15-1E6*V(0,_net12))*u(1E6*V(0,_net12)-(-15))+15*u(1E6*V(0,_net12)-15)+(-15)*u((-15)-1E6*V(0,_net12))
+C9 0 _net14  10.000N 
+C10 _net12 _net13  3584.709P 
+R13 _net14 _net13  37.593K tc1=0.0 tc2=0.0 
+R14 _net10 _net14  37.593K tc1=0.0 tc2=0.0 
+R15 _net14 _net12  18.797K tc1=0.0 tc2=0.0 
+B_OP6 _net16 0 V = 1E6*V(0,_net15)*u(15-1E6*V(0,_net15))*u(1E6*V(0,_net15)-(-15))+15*u(1E6*V(0,_net15)-15)+(-15)*u((-15)-1E6*V(0,_net15))
+C11 0 _net17  10.000N 
+C12 _net15 _net16  4454.579P 
+R16 _net17 _net16  33.723K tc1=0.0 tc2=0.0 
+R17 _net13 _net17  33.723K tc1=0.0 tc2=0.0 
+R18 _net17 _net15  16.862K tc1=0.0 tc2=0.0 
+B_OP7 out 0 V = 1E6*V(0,_net18)*u(15-1E6*V(0,_net18))*u(1E6*V(0,_net18)-(-15))+15*u(1E6*V(0,_net18)-15)+(-15)*u((-15)-1E6*V(0,_net18))
+C13 0 _net19  10.000N 
+C14 _net18 out  4937.320P 
+R19 _net19 out  32.032K tc1=0.0 tc2=0.0 
+R20 _net16 _net19  32.032K tc1=0.0 tc2=0.0 
+R21 _net19 _net18  16.016K tc1=0.0 tc2=0.0 
+
+.control
+
+ac lin 501 1 10k 
+let K=dB(V(out)/V(in))
+write spice4qucs.ac1.plot v(in) v(out) K
+destroy all
+reset
+
+op
+print v(in) v(out)   > spice4qucs.dc1.ngspice.dc.print
+destroy all
+reset
+
+exit
+.endc
+.END

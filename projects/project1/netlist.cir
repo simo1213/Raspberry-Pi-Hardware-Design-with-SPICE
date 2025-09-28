@@ -1,0 +1,20 @@
+* Qucs 25.2.0  C:/Users/86152/Desktop/projects/project1.sch
+.INCLUDE "D:/qucs_s/Qucs-S/share/qucs-s/xspice_cmlib/include/ngspice_mathfunc.inc"
+V1 _net1 0 DC 0 SIN(0 1 1K 0 0 0) AC 1 ACPHASE 0
+B_OP1 _net0 0 V = 1E6*V(_net1,_net2)*u(15-1E6*V(_net1,_net2))*u(1E6*V(_net1,_net2)-(-15))+15*u(1E6*V(_net1,_net2)-15)+(-15)*u((-15)-1E6*V(_net1,_net2))
+Rf _net2 _net0  1K tc1=0.0 tc2=0.0 
+R3 0 _net2  1K tc1=0.0 tc2=0.0 
+
+.control
+
+ac lin 200 1 20k 
+destroy all
+reset
+
+tran 5e-05 0.01 0 
+destroy all
+reset
+
+exit
+.endc
+.END
