@@ -1,4 +1,4 @@
-# ⚡ Raspberry Pi Circuit Design & SPICE Simulation
+#  Raspberry Pi Circuit Design & SPICE Simulation
 
 This repository contains my personal projects while learning circuit design and SPICE simulation with Raspberry Pi.
 It includes Qucs-S schematics, Ngspice simulations, and notes on filters, op-amps, and frequency analysis.
