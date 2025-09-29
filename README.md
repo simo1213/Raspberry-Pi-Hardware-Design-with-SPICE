@@ -1,11 +1,11 @@
-⚡ Raspberry Pi Circuit Design & SPICE Simulation
+# ⚡ Raspberry Pi Circuit Design & SPICE Simulation
 
 This repository contains my personal projects while learning circuit design and SPICE simulation with Raspberry Pi.
 It includes Qucs-S schematics, Ngspice simulations, and notes on filters, op-amps, and frequency analysis.
 
 ---
 
-📘 Learning Content
+# 📘 Learning Content
 
 ✅ Designed and analyzed passive RC/RLC filters and measured their responses
 
@@ -17,9 +17,9 @@ It includes Qucs-S schematics, Ngspice simulations, and notes on filters, op-amp
 
 ✅ Integrated simulated circuits into Raspberry Pi hardware experiments
 
-📂 Projects & Exercises
+---
 
-This repository includes:
+# 📂 This repository includes:
 
 🔌 Filter Design – RC low-pass/high-pass, RLC resonant circuits
 
