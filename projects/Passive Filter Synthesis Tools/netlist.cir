@@ -1,0 +1,21 @@
+* Qucs 25.2.0  C:/Users/86152/Desktop/projects/Passive Filter Synthesis Tools/project3.sch
+.INCLUDE "D:/qucs_s/Qucs-S/share/qucs-s/xspice_cmlib/include/ngspice_mathfunc.inc"
+.PARAM dBS21=dB(S[2,1])
+.PARAM dBS11=dB(S[1,1])
+VP1 _net0 0 dc 0 ac 0.632456 SIN(0 0.632456 1G) portnum 1 z0 50
+C1 0 _net0  318.3N 
+L1 _net0 _net1  1.592M 
+C2 0 _net1  318.3N 
+VP2 _net1 0 dc 0 ac 0.632456 SIN(0 0.632456 1G) portnum 2 z0 50
+
+.control
+
+let dBS21=dB(S[2,1])
+let dBS11=dB(S[1,1])
+SP DEC 100 1K 100K
+destroy all
+reset
+
+exit
+.endc
+.END
